@@ -33,5 +33,6 @@ Example:`a_20, l_108.3, h_104.3...（略）`
 
 ## 訓練程式碼
 [cnn_vtirf.ipynb](folder/cnn_vtirf.ipynb)
-`!pip install pytorch`
+```bash
+!pip install pytorch
 
