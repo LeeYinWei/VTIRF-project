@@ -33,9 +33,17 @@ Example:`a_20, l_108.3, h_104.3...（略）`
 
 ## 訓練程式碼
 [cnn_vtirf.ipynb](folder/cnn_vtirf.ipynb)
+執行前確保安裝好這些東西
 ```bash
 !pip install pytorch
 !pip install tqdm
 !pip install pandas
 ```
-1. 對，就這樣，沒啥特別，然後程式依序跑下去
+對，就這樣，沒啥特別，然後程式依序跑下去
+## 最佳化設定
+### Loss: MSE and CrossEntropyloss
+ MSE and CrossEntropyLoss在模型訓練過程中，我們採用了複合式的損失函數策略，以確保生成的結構不僅在數值上接近，且在物理特性（如能帶邊緣）上具備高度擬合度。
+ 1. Mean Squared Error (MSE Loss):用途：
+用來處理連續數據，像是terget vs predict厚度數值的差
+ 2. CrossEntropyLoss:
+用來處理離散數據，像是terget vs predict材料label的差
