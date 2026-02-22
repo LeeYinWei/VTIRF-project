@@ -31,4 +31,7 @@ Example:`a_20, l_108.3, h_104.3...（略）`
 2. 物理光譜模擬 (Physical Forward Simulation)傳輸矩陣法 (TMM)：利用 Transfer Matrix Method (TMM) 模擬每組結構在不同波長下的光學響應。波長取樣：採樣範圍涵蓋 200 nm 至 2000 nm，精確計算其穿透率 (Transmittance) 與反射率。高解析度處理：採用 200 點解析度以捕捉尖銳的切斷邊緣 (Cut-off edge)，這對於 VTIRF 的效能評估至關重要。
 3. 資料預處理與正規化 (Preprocessing & Normalization)標籤正規化 (Label Scaling)：將 16 層薄膜的厚度數據進行正規化處理，這有助於增強神經網路梯度計算的穩定性並加速收斂。特徵編碼：將模擬出的光譜數據編碼為一維序列 (1D Sequence)，作為 CNN 與 Transformer 模型的輸入特徵。訓練集劃分：將數據集劃分為訓練集與驗證集，以評估模型對於未知光譜結構設計的泛化能力。
 
+## 訓練程式碼
+[cnn_vtirf.ipynb](folder/cnn_vtirf.ipynb)
+`!pip install pytorch`
 
