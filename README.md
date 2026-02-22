@@ -35,4 +35,7 @@ Example:`a_20, l_108.3, h_104.3...（略）`
 [cnn_vtirf.ipynb](folder/cnn_vtirf.ipynb)
 ```bash
 !pip install pytorch
+!pip install tqdm
+!pip install pandas
 
+對，就這樣，沒啥特別
