@@ -47,3 +47,6 @@ Example:`a_20, l_108.3, h_104.3...（略）`
 用來處理連續數據，像是terget vs predict厚度數值的差
  2. CrossEntropyLoss:
 用來處理離散數據，像是terget vs predict材料label的差
+## Optimizer: 
+為了確保模型能精確地從光譜數據預測出正確的薄膜厚度，我們採用了 Adam (Adaptive Moment Estimation) 最佳化器，並搭配動態學習率調度策略。1. Optimizer: Adam選擇理由：Adam 結合了 AdaGrad 與 RMSProp 的優點，能夠為不同的參數計算自適應學習率。在處理 16 層薄膜這種具有複雜干涉物理性質、參數空間維度高的任務時，Adam 的收斂速度顯著快於傳統的 SGD。參數配置：初始學習率 (Learning Rate): $1 \times 10^{-3}$ 或 $1 \times 10^{-4}$，視訓練穩定度微調。權重衰減 (Weight Decay): 加入微小的權重衰減（如 $1 \times 10^{-5}$）以強化模型的泛化能力，防止過擬合。
+2. 學習率調度策略 (Learning Rate Scheduler)由於逆向設計對於厚度的精確度要求極高，我們使用了 ReduceLROnPlateau 策略：機制：模型在訓練過程中會監控驗證集損失 (Validation Loss)。若損失在連續 5-10 個 Epoch 內沒有顯著下降，系統會將當前學習率乘以 0.5（因子 Factor）。目的：這能讓模型在訓練後期「慢下來」，精細地搜尋物理參數空間中的全球最優解，從而達成 0.9813 的超高 FOM。
